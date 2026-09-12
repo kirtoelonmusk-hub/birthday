@@ -1,0 +1,656 @@
+ <!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>هدیه برای پرنسس یگانه ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --cherry-soft: #5a1525;
+      --cherry-light: #9e2a3e;
+      --cherry-glow: #ff6b8a;
+      --cherry-pink: #ff88a2;
+      --cherry-gold: #ffccaa;
+      --glass-bg: rgba(255, 245, 240, 0.15);
+      --glass-border: rgba(255, 180, 160, 0.3);
+      --text-light: #fff5f0;
+      --text-soft: #ffddcc;
+      --shadow-color: rgba(0, 0, 0, 0.2);
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #2a0a12, #3d101f, #2a0a12);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Vazirmatn', 'Segoe UI', 'Tahoma', sans-serif;
+      position: relative;
+      padding: 80px 20px 50px;
+    }
+
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: repeating-radial-gradient(circle at 20% 30%, rgba(255, 120, 140, 0.03) 0px, rgba(255, 120, 140, 0.03) 2px, transparent 2px, transparent 6px);
+      opacity: 0.5;
+      mix-blend-mode: overlay;
+      z-index: 1;
+    }
+
+    /* لاین نوری */
+    .light-line {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .light-line::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 107, 138, 0.08) 40%,
+        rgba(255, 107, 138, 0.12) 50%,
+        rgba(255, 107, 138, 0.08) 60%,
+        transparent 70%
+      );
+      animation: lightMove 10s linear infinite;
+    }
+    @keyframes lightMove {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -60px;
+      pointer-events: none;
+      z-index: 1;
+      font-size: 16px;
+      animation: floatUp 10s linear forwards;
+      filter: drop-shadow(0 0 3px #ff88a2);
+      opacity: 0.4;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* کارت اصلی کوچیک */
+    .gift-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      padding: 1.5rem 1.2rem;
+      border-radius: 50px 35px 50px 35px;
+      text-align: center;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 15px 35px var(--shadow-color), 0 0 0 1px var(--glass-border);
+      animation: cardFloat 3s ease-in-out infinite;
+      z-index: 10;
+      position: relative;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(125deg, #ffddcc, #ff88a2, #ff6b8a);
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 5px;
+      animation: softShine 3s ease-in-out infinite;
+    }
+
+    @keyframes softShine {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .subtitle {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      margin-bottom: 15px;
+    }
+
+    /* روزشمار */
+    .countdown-card {
+      background: linear-gradient(135deg, rgba(255, 107, 138, 0.2), rgba(255, 136, 162, 0.1));
+      backdrop-filter: blur(10px);
+      border-radius: 35px;
+      padding: 0.8rem;
+      margin: 0.8rem 0;
+      border: 1px solid rgba(255, 180, 160, 0.3);
+    }
+    .countdown-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .countdown-icon {
+      font-size: 1.1rem;
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    .countdown-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1rem;
+      font-weight: bold;
+      background: linear-gradient(120deg, #ffcc99, #ff88a2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .countdown-item {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      padding: 5px 10px;
+      min-width: 55px;
+      text-align: center;
+    }
+    .countdown-item span:first-child {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ff88a2;
+      font-family: monospace;
+    }
+    .countdown-item span:last-child {
+      font-size: 0.6rem;
+      color: #ffccaa;
+    }
+    .countdown-footer {
+      margin-top: 8px;
+      font-size: 0.65rem;
+      color: #ffaa88;
+    }
+
+    /* ========== خرس خفن تر ========== */
+    .bear-container {
+      margin: 15px 0;
+      cursor: pointer;
+      animation: bearFloat 3s ease-in-out infinite;
+    }
+    @keyframes bearFloat {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+    }
+    .bear {
+      position: relative;
+      width: 160px;
+      height: 180px;
+      margin: 0 auto;
+    }
+    /* بدن */
+    .bear-body {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 110px;
+      height: 110px;
+      background: linear-gradient(135deg, #c98a6e, #b57052);
+      border-radius: 50%;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    /* سر */
+    .bear-head {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 82px;
+      background: linear-gradient(135deg, #d49a7a, #b57052);
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    /* گوش‌ها */
+    .bear-ear {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      background: #d49a7a;
+      border-radius: 50%;
+      top: -6px;
+    }
+    .bear-ear-left { left: 8px; }
+    .bear-ear-right { right: 8px; }
+    .bear-ear-inner {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #ffb088;
+      border-radius: 50%;
+      top: 5px;
+      left: 5px;
+    }
+    /* چشم‌ها */
+    .bear-eyes {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: #2c1a10;
+      border-radius: 50%;
+      top: 28px;
+      box-shadow: 0 0 0 2px #fff0e0;
+      animation: eyeBlink 4s ease-in-out infinite;
+    }
+    @keyframes eyeBlink {
+      0%, 94%, 100% { transform: scaleY(1); }
+      97% { transform: scaleY(0.1); }
+    }
+    .bear-eye-left { left: 20px; }
+    .bear-eye-right { right: 20px; }
+    /* بینی */
+    .bear-nose {
+      position: absolute;
+      width: 18px;
+      height: 14px;
+      background: #5a3020;
+      border-radius: 50%;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    /* دهان خندان */
+    .bear-mouth {
+      position: absolute;
+      width: 24px;
+      height: 14px;
+      border-bottom: 2px solid #5a3020;
+      border-radius: 0 0 50% 50%;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    /* گونه‌ها */
+    .bear-cheek {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: #ffaa88;
+      border-radius: 50%;
+      bottom: 18px;
+      opacity: 0.6;
+    }
+    .bear-cheek-left { left: 12px; }
+    .bear-cheek-right { right: 12px; }
+    /* قلب روی دست */
+    .bear-heart {
+      position: absolute;
+      bottom: 25px;
+      right: 8px;
+      font-size: 22px;
+      animation: heartBeat 0.8s ease-in-out infinite;
+      filter: drop-shadow(0 0 4px #ff3366);
+    }
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    /* ربان */
+    .bear-ribbon {
+      position: absolute;
+      bottom: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 12px;
+      background: #ff2a4a;
+      border-radius: 8px;
+    }
+    .bear-ribbon::before,
+    .bear-ribbon::after {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 16px;
+      background: #ff2a4a;
+      border-radius: 0 0 6px 6px;
+      top: -10px;
+    }
+    .bear-ribbon::before {
+      left: 6px;
+      transform: rotate(-15deg);
+    }
+    .bear-ribbon::after {
+      right: 6px;
+      transform: rotate(15deg);
+    }
+    /* هاله نور دور خرس */
+    .bear-glow {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      width: calc(100% + 20px);
+      height: calc(100% + 20px);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 107, 138, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .bear-container:hover .bear-glow {
+      opacity: 1;
+    }
+
+    .bear-message {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: #ffcc99;
+      font-family: 'Dancing Script', cursive;
+      animation: messagePulse 2s ease-in-out infinite;
+    }
+    @keyframes messagePulse {
+      0%, 100% { opacity: 0.7; text-shadow: 0 0 0 #ff6b8a; }
+      50% { opacity: 1; text-shadow: 0 0 5px #ff6b8a; }
+    }
+
+    /* دکمه */
+    .btn-finish {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 25px;
+      background: linear-gradient(135deg, #9e2a3e, #ff6b8a);
+      background-size: 200% auto;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 12px rgba(255, 107, 138, 0.3);
+      margin-top: 12px;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-finish:active {
+      transform: scale(0.96);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #9e2a3e, #ff6b8a);
+      border: none;
+      cursor: pointer;
+      font-size: 1.3rem;
+      z-index: 1000;
+      box-shadow: 0 3px 12px rgba(255, 107, 138, 0.3);
+    }
+    .theme-toggle:active { transform: scale(0.92); }
+
+    footer {
+      font-size: 0.55rem;
+      opacity: 0.6;
+      margin-top: 15px;
+      color: var(--text-soft);
+    }
+
+    @media (max-width: 550px) {
+      .gift-card { padding: 1.2rem; max-width: 360px; }
+      h1 { font-size: 1.3rem; }
+      .bear { width: 140px; height: 160px; }
+      .bear-body { width: 95px; height: 95px; }
+      .bear-head { width: 78px; height: 72px; }
+      .bear-heart { font-size: 18px; right: 3px; }
+      .countdown-item { padding: 3px 8px; min-width: 48px; }
+      .countdown-item span:first-child { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="noise"></div>
+<div class="light-line"></div>
+<button class="theme-toggle" id="themeToggleBtn">🌙</button>
+
+<div class="gift-card">
+  <h1>🎁 هدیه برای پرنسس یگانه 🎁</h1>
+  <div class="subtitle">🌸 یه عالمه عشق و یه عروس خرسی ناز 🌸</div>
+
+  <!-- روزشمار -->
+  <div class="countdown-card">
+    <div class="countdown-header">
+      <span class="countdown-icon">⏳</span>
+      <span class="countdown-title">تا تولد بعدیت</span>
+      <span class="countdown-icon">🎂</span>
+    </div>
+    <div class="countdown">
+      <div class="countdown-item">
+        <span id="days">00</span>
+        <span>روز</span>
+      </div>
+      <div class="countdown-item">
+        <span id="hours">00</span>
+        <span>ساعت</span>
+      </div>
+      <div class="countdown-item">
+        <span id="minutes">00</span>
+        <span>دقیقه</span>
+      </div>
+      <div class="countdown-item">
+        <span id="seconds">00</span>
+        <span>ثانیه</span>
+      </div>
+    </div>
+    <div class="countdown-footer">✨ ۱۷ سپتامبر ۲۰۲۷ ✨</div>
+  </div>
+
+  <!-- عروس خرسی خفن -->
+  <div class="bear-container" id="bearContainer">
+    <div class="bear">
+      <div class="bear-glow"></div>
+      <div class="bear-body"></div>
+      <div class="bear-head">
+        <div class="bear-ear bear-ear-left">
+          <div class="bear-ear-inner"></div>
+        </div>
+        <div class="bear-ear bear-ear-right">
+          <div class="bear-ear-inner"></div>
+        </div>
+        <div class="bear-eyes bear-eye-left"></div>
+        <div class="bear-eyes bear-eye-right"></div>
+        <div class="bear-nose"></div>
+        <div class="bear-mouth"></div>
+        <div class="bear-cheek bear-cheek-left"></div>
+        <div class="bear-cheek bear-cheek-right"></div>
+        <div class="bear-heart">❤️</div>
+        <div class="bear-ribbon"></div>
+      </div>
+    </div>
+    <div class="bear-message" id="bearMessage">
+      🌹 دوستت دارم پرنسس کوچولو! 🌹
+    </div>
+  </div>
+
+  <a href="finish.html" class="btn-finish" id="nextBtn">
+    💖 بریم برای پیام آخر 💖
+  </a>
+
+  <footer>🍒 به مناسبت تولد پرنسس یگانه • عروس خرسی مخصوص تو 🍒</footer>
+</div>
+
+<script>
+  // ========== روزشمار ==========
+  function updateCountdown() {
+    const target = new Date(2027, 8, 17);
+    const now = new Date();
+    const diff = target - now;
+    
+    if (diff > 0) {
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (86400000)) / (3600000));
+      const minutes = Math.floor((diff % 3600000) / 60000);
+      const seconds = Math.floor((diff % 60000) / 1000);
+      
+      document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+      document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+    }
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // ========== قلب‌های شناور ==========
+  function createFloatingHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('floating-heart');
+    const icons = ['❤️', '💖', '🌸', '🍒', '💗', '✨'];
+    heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.fontSize = (Math.random() * 18 + 14) + 'px';
+    heart.style.animationDuration = (Math.random() * 8 + 6) + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 14000);
+  }
+  for (let i = 0; i < 15; i++) setTimeout(createFloatingHeart, i * 100);
+  setInterval(createFloatingHeart, 400);
+
+  // ========== خرس با کلیک ==========
+  const bearContainer = document.getElementById('bearContainer');
+  const bearMessage = document.getElementById('bearMessage');
+  const messages = [
+    '🌹 دوستت دارم پرنسس کوچولو! 🌹',
+    '🐻 خرسی بهت میگه تولدت مبارک! 🎂',
+    '💖 همیشه کنارت هستم عزیزم 💖',
+    '🌸 تو بهترینی! دوست دارم بی‌نهایت 🌸',
+    '🍒 عروس خرسی برات آرزوی خوشبختی میکنه 🍒'
+  ];
+  let msgIndex = 0;
+
+  function createHeartBurst() {
+    for (let i = 0; i < 12; i++) {
+      setTimeout(() => {
+        const heart = document.createElement('div');
+        heart.innerHTML = ['❤️', '💖', '🌸', '🍒', '💗'][Math.floor(Math.random() * 5)];
+        heart.style.position = 'fixed';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.bottom = '-30px';
+        heart.style.fontSize = (Math.random() * 20 + 16) + 'px';
+        heart.style.pointerEvents = 'none';
+        heart.style.zIndex = '999';
+        heart.style.animation = 'floatHeartBurst 1.5s ease-out forwards';
+        heart.style.filter = 'drop-shadow(0 0 5px #ff6b8a)';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1500);
+      }, i * 50);
+    }
+  }
+
+  const burstStyle = document.createElement('style');
+  burstStyle.textContent = `@keyframes floatHeartBurst { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-80px) rotate(360deg); opacity: 0; } }`;
+  document.head.appendChild(burstStyle);
+
+  bearContainer.addEventListener('click', () => {
+    msgIndex = (msgIndex + 1) % messages.length;
+    bearMessage.innerHTML = messages[msgIndex];
+    bearMessage.style.opacity = '0';
+    setTimeout(() => { bearMessage.style.opacity = '1'; }, 200);
+    
+    createHeartBurst();
+    
+    const bear = document.querySelector('.bear');
+    bear.style.transform = 'scale(0.96)';
+    setTimeout(() => { bear.style.transform = 'scale(1)'; }, 150);
+  });
+
+  // ========== قلب با کلیک ==========
+  function createHeartGlow(x, y) {
+    const heart = document.createElement('div');
+    heart.innerHTML = ['❤️', '💖', '🌸', '✨', '🍒', '💗'][Math.floor(Math.random() * 6)];
+    heart.style.position = 'fixed';
+    heart.style.left = (x - 10) + 'px';
+    heart.style.top = (y - 10) + 'px';
+    heart.style.fontSize = '20px';
+    heart.style.pointerEvents = 'none';
+    heart.style.zIndex = '999';
+    heart.style.animation = 'heartPop 0.8s ease-out forwards';
+    heart.style.filter = 'drop-shadow(0 0 5px #ff6b8a)';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 800);
+  }
+
+  const popStyle = document.createElement('style');
+  popStyle.textContent = `@keyframes heartPop { 0% { transform: scale(0) translateY(0); opacity: 1; } 100% { transform: scale(1.5) translateY(-30px); opacity: 0; } }`;
+  document.head.appendChild(popStyle);
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.btn-finish') && !e.target.closest('.theme-toggle') && !e.target.closest('.bear-container')) {
+      createHeartGlow(e.clientX, e.clientY);
+    }
+  });
+
+  document.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    if (!e.target.closest('.btn-finish') && !e.target.closest('.theme-toggle') && !e.target.closest('.bear-container')) {
+      createHeartGlow(touch.clientX, touch.clientY);
+    }
+  });
+
+  // ========== دکمه تغییر تم ==========
+  const themeToggle = document.getElementById('themeToggleBtn');
+  let isDark = true;
+  themeToggle.addEventListener('click', () => {
+    if (isDark) {
+      document.body.style.background = 'linear-gradient(145deg, #fff0e8, #ffe0d4, #ffd5c8)';
+      themeToggle.innerHTML = '☀️';
+      isDark = false;
+    } else {
+      document.body.style.background = 'linear-gradient(145deg, #2a0a12, #3d101f, #2a0a12)';
+      themeToggle.innerHTML = '🌙';
+      isDark = true;
+    }
+  });
+</script>
+</body>
+</html>

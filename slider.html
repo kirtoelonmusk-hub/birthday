@@ -1,0 +1,455 @@
+ <!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>بخش بانمک | مخصوص یگانه ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --cherry-dark: #0a0104;
+      --cherry-mid: #3a0512;
+      --cherry-light: #8b1a2c;
+      --cherry-glow: #ff2a4a;
+      --cherry-pink: #ff5a7a;
+      --cherry-gold: #ffcc99;
+      --glass-bg: rgba(139, 26, 44, 0.3);
+      --glass-border: rgba(255, 80, 120, 0.5);
+      --text-light: #fff5ee;
+      --text-gold: #ffddbb;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 30% 30%, var(--cherry-dark), var(--cherry-mid), #1a0208);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', 'Poppins', 'Tahoma', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+      padding: 20px;
+    }
+
+    .noise {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: repeating-radial-gradient(circle at 20% 30%, rgba(255, 42, 74, 0.05) 0px, rgba(255, 42, 74, 0.05) 2px, transparent 2px, transparent 5px);
+      opacity: 0.6;
+      mix-blend-mode: overlay;
+      z-index: 1;
+    }
+
+    .slides-container {
+      width: 90%;
+      max-width: 750px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .slide {
+      background: rgba(139, 26, 44, 0.25);
+      backdrop-filter: blur(20px);
+      border-radius: 60px;
+      padding: 2rem;
+      text-align: center;
+      border: 1px solid rgba(255, 80, 120, 0.5);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--text-gold);
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #ff2a4a;
+    }
+
+    .cherry-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #8b1a2c, #ff2a4a);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.2s;
+    }
+
+    .cherry-btn:active { transform: scale(0.95); }
+
+    /* پیام قفل شده */
+    .locked-message {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px 0;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .locked-message.locked { filter: blur(8px); background: #2a0a10; }
+    .locked-message.unlocked { filter: blur(0); background: rgba(255, 42, 74, 0.3); }
+
+    /* امضا دیجیتال */
+    .signature-canvas {
+      border: 2px solid #ff5a7a;
+      border-radius: 20px;
+      background: white;
+      margin: 15px 0;
+      touch-action: none;
+    }
+    .clear-sign-btn { background: #555; padding: 8px 20px; font-size: 0.8rem; }
+
+    /* بازی حافظه */
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .memory-card {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, #8b1a2c, #ff2a4a);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .memory-card.flipped { background: #ffcc99; transform: rotateY(180deg); }
+    .memory-card.matched { opacity: 0.5; pointer-events: none; }
+
+    /* پیشگویی */
+    .fortune-ball {
+      width: 150px;
+      height: 150px;
+      background: radial-gradient(circle, #ff2a4a, #8b1a2c);
+      border-radius: 50%;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 3rem;
+      box-shadow: 0 0 20px #ff2a4a;
+    }
+    .fortune-ball:active { transform: scale(0.95); }
+    .fortune-text { font-size: 1rem; color: #ffcc99; margin-top: 10px; }
+
+    /* گلبرگ آرزو */
+    .wish-petal {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, #ff5a7a, #ff2a4a);
+      border-radius: 0 50% 0 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+    .wish-petal:active { transform: scale(0.9); }
+
+    /* چالش بوسه */
+    .kiss-area {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #ff5a7a, #ff2a4a);
+      border-radius: 50%;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      cursor: pointer;
+    }
+    .kiss-area:active { transform: scale(0.95); background: #ff8899; }
+
+    .restart-btn { background: linear-gradient(135deg, #ffcc99, #ff5a7a); color: #3a0512; margin-top: 20px; }
+
+    @media (max-width: 550px) {
+      .slide { padding: 1.2rem; }
+      h2 { font-size: 1.3rem; }
+      .memory-grid { gap: 8px; }
+      .memory-card { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="noise"></div>
+
+<div class="slides-container" id="slidesContainer">
+  <!-- اسلاید 1 -->
+  <div class="slide" id="slide1">
+    <h2>📸 قاب عکس یادگاری</h2>
+    <div style="width: 200px; height: 200px; background: #ffcc99; border-radius: 20px; margin: 20px auto; display: flex; align-items: center; justify-content: center; font-size: 3rem; border: 3px solid #ff2a4a;">🖼️</div>
+    <p>این قاب مال تو... یه عکس قشنگ بذار توش!</p>
+    <button class="cherry-btn" onclick="nextSlide()">📸 بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 2 -->
+  <div class="slide" id="slide2" style="display: none;">
+    <h2>🔐 پیام قفل شده</h2>
+    <div class="locked-message locked" id="lockedMsg" onclick="unlockMessage()">🔒 برای خوندن پیام کلیک کن 🔒</div>
+    <div id="secretMsg" style="display: none; background: rgba(255,42,74,0.3); padding: 15px; border-radius: 20px; margin-top: 10px;">🌸 یگانه جان... تو بهترین اتفاق زندگی منی! دوست دارم بی‌نهایت ❤️</div>
+    <button class="cherry-btn" onclick="nextSlide()">🔓 بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 3 -->
+  <div class="slide" id="slide3" style="display: none;">
+    <h2>✍️ امضای دیجیتال</h2>
+    <canvas id="signCanvas" width="280" height="150" class="signature-canvas" style="width:100%; height:auto; max-width:280px;"></canvas>
+    <button class="cherry-btn clear-sign-btn" onclick="clearSignature()">🗑️ پاک کردن</button>
+    <button class="cherry-btn" onclick="saveSignature()">💾 ذخیره امضا</button>
+    <button class="cherry-btn" onclick="nextSlide()">✍️ بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 4 -->
+  <div class="slide" id="slide4" style="display: none;">
+    <h2>⏰ کپسول زمان</h2>
+    <textarea id="timeCapsule" rows="3" style="width: 90%; padding: 12px; border-radius: 20px; background: #fff5ee; border: none; margin: 15px 0;" placeholder="برای ۲۰ سالگیت یه آرزو بنویس..."></textarea>
+    <button class="cherry-btn" onclick="saveTimeCapsule()">📦 ذخیره</button>
+    <button class="cherry-btn" onclick="nextSlide()">⏰ بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 5 -->
+  <div class="slide" id="slide5" style="display: none;">
+    <h2>🎮 بازی حافظه</h2>
+    <div class="memory-grid" id="memoryGrid"></div>
+    <p id="memoryStatus">❤️ پیدا کن و برنده شو!</p>
+    <button class="cherry-btn" onclick="nextSlide()">🎮 بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 6 -->
+  <div class="slide" id="slide6" style="display: none;">
+    <h2>😂 چالش خنده</h2>
+    <div id="jokeBox" style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 30px; margin: 20px 0;">🤣 برای خندیدن کلیک کن!</div>
+    <button class="cherry-btn" onclick="tellJoke()">😂 یه لطیفه بگو</button>
+    <button class="cherry-btn" onclick="nextSlide()">😂 بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 7 -->
+  <div class="slide" id="slide7" style="display: none;">
+    <h2>🔮 پیشگویی عاشقانه</h2>
+    <div class="fortune-ball" onclick="showFortune()">🔮</div>
+    <div id="fortuneText" class="fortune-text">✨ برای دیدن طالع‌ات کلیک کن ✨</div>
+    <button class="cherry-btn" onclick="nextSlide()">🔮 بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 8 -->
+  <div class="slide" id="slide8" style="display: none;">
+    <h2>🌸 گلبرگ آرزو</h2>
+    <div class="wish-petal" onclick="makeWish()">🌸</div>
+    <div id="wishResult" style="margin-top: 15px;"></div>
+    <button class="cherry-btn" onclick="nextSlide()">🌸 بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 9 -->
+  <div class="slide" id="slide9" style="display: none;">
+    <h2>🎫 کد تخفیف عاشقانه</h2>
+    <div style="background: #ffcc99; padding: 20px; border-radius: 20px; margin: 20px 0;">
+      <p style="font-size: 1.5rem; color: #8b1a2c; font-weight: bold;">🎁 YEGANE75 🎁</p>
+      <p style="color: #8b1a2c;">کد تخفیف ۷۵٪ برای بغل کردن من!</p>
+    </div>
+    <button class="cherry-btn" onclick="copyCode()">📋 کپی کن</button>
+    <button class="cherry-btn" onclick="nextSlide()">🎫 بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 10 -->
+  <div class="slide" id="slide10" style="display: none;">
+    <h2>🤳 سلفی نهایی</h2>
+    <div style="width: 200px; height: 200px; background: #ffcc99; border-radius: 30px; margin: 20px auto; display: flex; align-items: center; justify-content: center; font-size: 3rem; border: 3px solid #ff2a4a;">📸</div>
+    <p>سلفی بگیر و بهم بفرست! منتظرم 😊</p>
+    <button class="cherry-btn" onclick="nextSlide()">🤳 بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 11 -->
+  <div class="slide" id="slide11" style="display: none;">
+    <h2>😘 چالش بوسه</h2>
+    <div class="kiss-area" onclick="kissChallenge()">💋</div>
+    <div id="kissResult" style="margin-top: 15px;"></div>
+    <button class="cherry-btn" onclick="nextSlide()">😘 بعدی ➡️</button>
+  </div>
+
+  <!-- اسلاید 12 -->
+  <div class="slide" id="slide12" style="display: none;">
+    <h2>🎉 تبریک! 🎉</h2>
+    <p style="font-size: 1.3rem; margin: 20px 0;">✨ تو همه چالش‌ها رو پشت سر گذاشتی! ✨</p>
+    <p>🌹 تو بهترین پرنسس دنیایی 🌹</p>
+    <div style="font-size: 3rem;">❤️🍒🌸</div>
+    <button class="cherry-btn restart-btn" onclick="goToStart()">🏠 برگشت به صفحه اول</button>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 1;
+  const totalSlides = 12;
+
+  function showSlide(n) {
+    for (let i = 1; i <= totalSlides; i++) {
+      const slide = document.getElementById(`slide${i}`);
+      if (slide) slide.style.display = 'none';
+    }
+    const current = document.getElementById(`slide${n}`);
+    if (current) current.style.display = 'block';
+    currentSlide = n;
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides) {
+      showSlide(currentSlide + 1);
+    } else {
+      showSlide(1);
+    }
+  }
+
+  function unlockMessage() {
+    const locked = document.getElementById('lockedMsg');
+    const secret = document.getElementById('secretMsg');
+    locked.classList.remove('locked');
+    locked.classList.add('unlocked');
+    locked.innerHTML = '🔓 پیام باز شد! 🔓';
+    secret.style.display = 'block';
+  }
+
+  // امضا
+  let canvas = document.getElementById('signCanvas');
+  let ctx = canvas.getContext('2d');
+  let drawing = false;
+  function resizeCanvas() {
+    const container = canvas.parentElement;
+    const width = Math.min(280, container.clientWidth - 40);
+    canvas.width = width;
+    canvas.height = width * 0.5;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = '#8b1a2c';
+    ctx.lineWidth = 2;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  function getCoords(e) {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+    let x = (e.clientX - rect.left) * scaleX;
+    let y = (e.clientY - rect.top) * scaleY;
+    return { x: Math.min(Math.max(0, x), canvas.width), y: Math.min(Math.max(0, y), canvas.height) };
+  }
+
+  function startDraw(e) { drawing = true; const pos = getCoords(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); e.preventDefault(); }
+  function draw(e) { if (!drawing) return; const pos = getCoords(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); e.preventDefault(); }
+  function stopDraw() { drawing = false; }
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDraw);
+  canvas.addEventListener('touchstart', startDraw);
+  canvas.addEventListener('touchmove', draw);
+  canvas.addEventListener('touchend', stopDraw);
+
+  function clearSignature() { ctx.fillStyle = 'white'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+  function saveSignature() { alert('✅ امضایت ذخیره شد!'); }
+
+  function saveTimeCapsule() { const msg = document.getElementById('timeCapsule').value; if(msg) alert('✅ آرزویت در کپسول زمان ذخیره شد!'); else alert('⚠️ یه آرزوی قشنگ بنویس!'); }
+
+  // بازی حافظه
+  const emojis = ['❤️', '🍒', '🌸', '💖', '❤️', '🍒', '🌸', '💖'];
+  let shuffled = [], flipped = [], matched = [], lockBoard = false;
+  function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+  function initMemoryGame() {
+    shuffled = shuffleArray([...emojis]);
+    flipped = []; matched = []; lockBoard = false;
+    renderMemoryGrid();
+    document.getElementById('memoryStatus').innerHTML = '❤️ پیدا کن و برنده شو!';
+  }
+  function renderMemoryGrid() {
+    const grid = document.getElementById('memoryGrid');
+    grid.innerHTML = '';
+    shuffled.forEach((emoji, idx) => {
+      const card = document.createElement('div');
+      card.className = 'memory-card';
+      if (flipped.includes(idx) || matched.includes(idx)) {
+        card.innerHTML = emoji;
+        if (matched.includes(idx)) card.classList.add('matched');
+      } else card.innerHTML = '?';
+      card.onclick = () => flipCard(idx);
+      grid.appendChild(card);
+    });
+  }
+  function flipCard(idx) {
+    if (lockBoard) return;
+    if (flipped.includes(idx) || matched.includes(idx)) return;
+    flipped.push(idx);
+    renderMemoryGrid();
+    if (flipped.length === 2) { lockBoard = true; setTimeout(checkMatch, 500); }
+  }
+  function checkMatch() {
+    const [a, b] = flipped;
+    if (shuffled[a] === shuffled[b]) matched.push(a, b);
+    flipped = [];
+    renderMemoryGrid();
+    lockBoard = false;
+    if (matched.length === emojis.length) document.getElementById('memoryStatus').innerHTML = '🎊 تبریک! برنده شدی! 🎊';
+  }
+
+  const jokes = ["🗣️: چرا گوجه فرنگی از خیار میترسید؟ 🍅<br>😂: چون خیار خیاره!", "🗣️: به تخم مرغ چی میگن که میخنده؟ 🥚<br>😂: تخم مرغ خنده!", "🗣️: چرا موز نمی تونه بره سربازی؟ 🍌<br>😂: چون پوستش کنده!"];
+  function tellJoke() { document.getElementById('jokeBox').innerHTML = jokes[Math.floor(Math.random() * jokes.length)]; }
+
+  const fortunes = ["🔮 سال آینده یه سفر قشنگ در انتظارته!", "🔮 یه خبر خوب به زودی بهت میرسه!", "🔮 کسی که دوستش داری همیشه بهت فکر میکنه!"];
+  function showFortune() { document.getElementById('fortuneText').innerHTML = fortunes[Math.floor(Math.random() * fortunes.length)]; }
+
+  function makeWish() { document.getElementById('wishResult').innerHTML = '🌸 آرزوت به گلبرگا سپرده شد! انشالله برآورده میشه 🌸'; }
+  function copyCode() { navigator.clipboard.writeText('YEGANE75'); alert('🎫 کد تخفیف کپی شد!'); }
+  function kissChallenge() { document.getElementById('kissResult').innerHTML = '😘 آفرین! یه بوسه قشنگ فرستادی برام ❤️'; }
+  function goToStart() { window.location.href = 'index.html'; }
+
+  // قلب شناور
+  setInterval(() => {
+    const heart = document.createElement('div');
+    heart.innerHTML = ['❤️', '💖', '🌸'][Math.floor(Math.random() * 3)];
+    heart.style.position = 'fixed';
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.bottom = '-50px';
+    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+    heart.style.pointerEvents = 'none';
+    heart.style.zIndex = '999';
+    heart.style.animation = 'floatHeart 2s ease-out forwards';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 2000);
+  }, 1000);
+
+  const style = document.createElement('style');
+  style.textContent = `@keyframes floatHeart { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-100vh); opacity: 0; } }`;
+  document.head.appendChild(style);
+
+  showSlide(1);
+  initMemoryGame();
+</script>
+</body>
+</html>
