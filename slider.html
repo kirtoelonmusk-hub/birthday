@@ -3,312 +3,417 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>بخش بانمک | مخصوص یگانه ❤️</title>
+  <title>بخش بانمک | مخصوص یگانه</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     :root {
-      --cherry-dark: #0a0104;
-      --cherry-mid: #3a0512;
-      --cherry-light: #8b1a2c;
-      --cherry-glow: #ff2a4a;
-      --cherry-pink: #ff5a7a;
-      --cherry-gold: #ffcc99;
-      --glass-bg: rgba(139, 26, 44, 0.3);
-      --glass-border: rgba(255, 80, 120, 0.5);
-      --text-light: #fff5ee;
-      --text-gold: #ffddbb;
+      --blue-dark: #061428;
+      --blue-mid: #0a2342;
+      --blue-light: #1e3a5f;
+      --blue-glow: #4facfe;
+      --blue-cyan: #00f2fe;
+      --blue-soft: #7fc4ff;
+      --blue-pale: #b8e0ff;
+      --glass-bg: rgba(30, 58, 95, 0.3);
+      --glass-border: rgba(79, 172, 254, 0.4);
+      --text-light: #e8f4ff;
+      --text-soft: #b8d8f0;
     }
 
     body {
       min-height: 100vh;
-      background: radial-gradient(ellipse at 30% 30%, var(--cherry-dark), var(--cherry-mid), #1a0208);
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(79, 172, 254, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(0, 242, 254, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 80%, rgba(30, 58, 95, 0.3) 0%, transparent 60%),
+        linear-gradient(135deg, #061428, #0a2342, #0d1f3d, #061428);
+      background-size: 200% 200%, 200% 200%, 200% 200%, auto;
+      animation: bgMove 15s ease infinite;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Segoe UI', 'Poppins', 'Tahoma', sans-serif;
-      overflow-x: hidden;
+      font-family: 'Vazirmatn', 'Segoe UI', 'Tahoma', sans-serif;
       position: relative;
       padding: 20px;
+      overflow-x: hidden;
+    }
+
+    @keyframes bgMove {
+      0%, 100% { background-position: 0% 0%, 0% 0%, 0% 0%; }
+      50% { background-position: 100% 100%, 100% 100%, 100% 100%; }
     }
 
     .noise {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       pointer-events: none;
-      background: repeating-radial-gradient(circle at 20% 30%, rgba(255, 42, 74, 0.05) 0px, rgba(255, 42, 74, 0.05) 2px, transparent 2px, transparent 5px);
-      opacity: 0.6;
+      background: repeating-radial-gradient(circle at 20% 30%, rgba(79, 172, 254, 0.04) 0px, rgba(79, 172, 254, 0.04) 2px, transparent 2px, transparent 6px);
+      opacity: 0.5;
       mix-blend-mode: overlay;
       z-index: 1;
     }
 
+    .particle {
+      position: fixed;
+      background: radial-gradient(circle, rgba(79, 172, 254, 0.7), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+      animation: particleFloat linear infinite;
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.4; }
+      100% { transform: translateY(-20vh) scale(1.5); opacity: 0; }
+    }
+
     .slides-container {
       width: 90%;
-      max-width: 750px;
+      max-width: 480px;
       position: relative;
       z-index: 10;
     }
 
     .slide {
-      background: rgba(139, 26, 44, 0.25);
-      backdrop-filter: blur(20px);
-      border-radius: 60px;
-      padding: 2rem;
+      background: var(--glass-bg);
+      backdrop-filter: blur(25px);
+      border-radius: 50px 35px 50px 35px;
+      padding: 2.2rem 1.6rem;
       text-align: center;
-      border: 1px solid rgba(255, 80, 120, 0.5);
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
-      animation: fadeIn 0.5s ease;
+      border: 1px solid var(--glass-border);
+      box-shadow: 
+        0 25px 45px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(79, 172, 254, 0.2);
+      animation: slideIn 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     h2 {
-      font-size: 1.8rem;
-      color: var(--text-gold);
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #ff2a4a;
+      font-size: 1.7rem;
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(125deg, #b8e0ff, #4facfe, #00f2fe);
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 25px;
+      animation: titleShine 4s linear infinite;
+      font-weight: 700;
     }
 
+    @keyframes titleShine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    /* دکمه */
     .cherry-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 12px 30px;
-      background: linear-gradient(135deg, #8b1a2c, #ff2a4a);
+      padding: 12px 32px;
+      background: linear-gradient(135deg, #1e3a5f, #4facfe);
+      background-size: 200% auto;
       color: white;
       border: none;
       border-radius: 50px;
-      font-weight: bold;
-      font-size: 1rem;
+      font-weight: 700;
+      font-size: 0.95rem;
       cursor: pointer;
-      margin: 10px;
-      transition: all 0.2s;
+      margin: 8px 5px;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(79, 172, 254, 0.35);
+      position: relative;
+      overflow: hidden;
+      font-family: 'Vazirmatn', sans-serif;
     }
 
+    .cherry-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .cherry-btn:hover::before { left: 100%; }
     .cherry-btn:active { transform: scale(0.95); }
 
     /* پیام قفل شده */
     .locked-message {
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(0, 0, 0, 0.4);
       border-radius: 20px;
-      padding: 20px;
+      padding: 25px;
       margin: 15px 0;
       cursor: pointer;
+      transition: all 0.4s;
+      color: var(--text-light);
+      font-size: 1rem;
+      border: 1px solid rgba(79, 172, 254, 0.3);
+      font-weight: 500;
+    }
+    .locked-message.locked { filter: blur(6px); background: #0a1f38; }
+    .locked-message.unlocked { 
+      filter: blur(0); 
+      background: linear-gradient(135deg, rgba(79, 172, 254, 0.25), rgba(0, 242, 254, 0.15));
+      border-color: rgba(79, 172, 254, 0.6);
+      box-shadow: 0 0 25px rgba(79, 172, 254, 0.3);
+    }
+
+    /* کپسول زمان */
+    .time-textarea {
+      width: 90%;
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(232, 244, 255, 0.95);
+      border: 2px solid rgba(79, 172, 254, 0.4);
+      margin: 15px 0;
+      font-family: 'Vazirmatn', sans-serif;
+      font-size: 0.9rem;
+      color: #061428;
+      resize: none;
+      outline: none;
       transition: all 0.3s;
     }
-    .locked-message.locked { filter: blur(8px); background: #2a0a10; }
-    .locked-message.unlocked { filter: blur(0); background: rgba(255, 42, 74, 0.3); }
-
-    /* امضا دیجیتال */
-    .signature-canvas {
-      border: 2px solid #ff5a7a;
-      border-radius: 20px;
-      background: white;
-      margin: 15px 0;
-      touch-action: none;
+    .time-textarea:focus {
+      border-color: var(--blue-glow);
+      box-shadow: 0 0 20px rgba(79, 172, 254, 0.4);
     }
-    .clear-sign-btn { background: #555; padding: 8px 20px; font-size: 0.8rem; }
+    .time-textarea::placeholder {
+      color: #5a7a9a;
+    }
 
-    /* بازی حافظه */
-    .memory-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+    /* ========== کد تخفیف شیک ========== */
+    .code-box {
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 25px;
       margin: 20px 0;
+      padding: 3px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
     }
-    .memory-card {
-      aspect-ratio: 1;
-      background: linear-gradient(135deg, #8b1a2c, #ff2a4a);
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    .code-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, #4facfe, transparent, #00f2fe, transparent);
+      animation: rotateBorder 4s linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes rotateBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .code-inner {
+      background: linear-gradient(135deg, #0a2342, #1e3a5f);
+      border-radius: 22px;
+      padding: 25px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .code-label {
+      font-size: 0.75rem;
+      color: var(--blue-soft);
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .code {
       font-size: 2rem;
-      cursor: pointer;
-      transition: all 0.3s;
+      color: white;
+      font-weight: 800;
+      letter-spacing: 5px;
+      text-shadow: 
+        0 0 10px rgba(79, 172, 254, 0.8),
+        0 0 20px rgba(79, 172, 254, 0.5);
+      margin: 8px 0;
+      font-family: 'Dancing Script', cursive;
+      animation: codePulse 2s ease-in-out infinite;
     }
-    .memory-card.flipped { background: #ffcc99; transform: rotateY(180deg); }
-    .memory-card.matched { opacity: 0.5; pointer-events: none; }
 
-    /* پیشگویی */
-    .fortune-ball {
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, #ff2a4a, #8b1a2c);
-      border-radius: 50%;
-      margin: 20px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 3rem;
-      box-shadow: 0 0 20px #ff2a4a;
+    @keyframes codePulse {
+      0%, 100% { text-shadow: 0 0 10px rgba(79, 172, 254, 0.8), 0 0 20px rgba(79, 172, 254, 0.5); }
+      50% { text-shadow: 0 0 15px rgba(79, 172, 254, 1), 0 0 30px rgba(79, 172, 254, 0.7), 0 0 40px rgba(0, 242, 254, 0.4); }
     }
-    .fortune-ball:active { transform: scale(0.95); }
-    .fortune-text { font-size: 1rem; color: #ffcc99; margin-top: 10px; }
 
-    /* گلبرگ آرزو */
-    .wish-petal {
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, #ff5a7a, #ff2a4a);
-      border-radius: 0 50% 0 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      cursor: pointer;
+    .code-desc {
+      color: var(--blue-pale);
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    /* تبریک پایانی */
+    .congrats-text {
+      font-size: 1.2rem;
+      margin: 18px 0;
+      color: var(--blue-pale);
+      font-family: 'Dancing Script', cursive;
+    }
+    .princess-line {
+      font-size: 1.1rem;
+      color: var(--blue-soft);
+      margin: 12px 0;
+    }
+    .hearts-row {
       font-size: 2rem;
+      margin: 25px 0;
+      letter-spacing: 15px;
+      animation: heartsFloat 3s ease-in-out infinite;
     }
-    .wish-petal:active { transform: scale(0.9); }
 
-    /* چالش بوسه */
-    .kiss-area {
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, #ff5a7a, #ff2a4a);
+    @keyframes heartsFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .restart-btn {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      color: #061428;
+      margin-top: 15px;
+      box-shadow: 0 5px 20px rgba(79, 172, 254, 0.5);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
-      margin: 20px auto;
+      background: linear-gradient(135deg, #1e3a5f, #4facfe);
+      border: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      z-index: 1000;
+      box-shadow: 0 3px 15px rgba(79, 172, 254, 0.5);
+      transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4rem;
-      cursor: pointer;
+      color: white;
     }
-    .kiss-area:active { transform: scale(0.95); background: #ff8899; }
+    .theme-toggle:active { transform: scale(0.9); }
 
-    .restart-btn { background: linear-gradient(135deg, #ffcc99, #ff5a7a); color: #3a0512; margin-top: 20px; }
+    body.light-theme {
+      background: linear-gradient(145deg, #e8f4ff, #d0e8ff, #b8dcff);
+    }
+    body.light-theme .slide {
+      background: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 25px 45px rgba(79, 172, 254, 0.15), 0 0 30px rgba(79, 172, 254, 0.2);
+    }
+    body.light-theme .locked-message {
+      background: rgba(79, 172, 254, 0.1);
+      color: #061428;
+    }
+    body.light-theme .locked-message.locked {
+      background: rgba(79, 172, 254, 0.15);
+    }
+    body.light-theme .princess-line,
+    body.light-theme .congrats-text {
+      color: #0a2342;
+    }
 
     @media (max-width: 550px) {
-      .slide { padding: 1.2rem; }
-      h2 { font-size: 1.3rem; }
-      .memory-grid { gap: 8px; }
-      .memory-card { font-size: 1.2rem; }
+      .slide { padding: 1.6rem 1.2rem; border-radius: 45px 30px 45px 30px; }
+      h2 { font-size: 1.4rem; }
+      .cherry-btn { padding: 10px 24px; font-size: 0.85rem; }
+      .code { font-size: 1.7rem; letter-spacing: 4px; }
+      .hearts-row { font-size: 1.6rem; letter-spacing: 10px; }
+      .congrats-text { font-size: 1rem; }
+      .princess-line { font-size: 0.95rem; }
     }
   </style>
 </head>
 <body>
 
 <div class="noise"></div>
+<button class="theme-toggle" id="themeToggleBtn">🌙</button>
 
 <div class="slides-container" id="slidesContainer">
-  <!-- اسلاید 1 -->
+
+  <!-- اسلاید 1: پیام قفل شده -->
   <div class="slide" id="slide1">
-    <h2>📸 قاب عکس یادگاری</h2>
-    <div style="width: 200px; height: 200px; background: #ffcc99; border-radius: 20px; margin: 20px auto; display: flex; align-items: center; justify-content: center; font-size: 3rem; border: 3px solid #ff2a4a;">🖼️</div>
-    <p>این قاب مال تو... یه عکس قشنگ بذار توش!</p>
-    <button class="cherry-btn" onclick="nextSlide()">📸 بعدی ➡️</button>
-  </div>
-
-  <!-- اسلاید 2 -->
-  <div class="slide" id="slide2" style="display: none;">
-    <h2>🔐 پیام قفل شده</h2>
-    <div class="locked-message locked" id="lockedMsg" onclick="unlockMessage()">🔒 برای خوندن پیام کلیک کن 🔒</div>
-    <div id="secretMsg" style="display: none; background: rgba(255,42,74,0.3); padding: 15px; border-radius: 20px; margin-top: 10px;">🌸 یگانه جان... تو بهترین اتفاق زندگی منی! دوست دارم بی‌نهایت ❤️</div>
-    <button class="cherry-btn" onclick="nextSlide()">🔓 بعدی ➡️</button>
-  </div>
-
-  <!-- اسلاید 3 -->
-  <div class="slide" id="slide3" style="display: none;">
-    <h2>✍️ امضای دیجیتال</h2>
-    <canvas id="signCanvas" width="280" height="150" class="signature-canvas" style="width:100%; height:auto; max-width:280px;"></canvas>
-    <button class="cherry-btn clear-sign-btn" onclick="clearSignature()">🗑️ پاک کردن</button>
-    <button class="cherry-btn" onclick="saveSignature()">💾 ذخیره امضا</button>
-    <button class="cherry-btn" onclick="nextSlide()">✍️ بعدی ➡️</button>
-  </div>
-
-  <!-- اسلاید 4 -->
-  <div class="slide" id="slide4" style="display: none;">
-    <h2>⏰ کپسول زمان</h2>
-    <textarea id="timeCapsule" rows="3" style="width: 90%; padding: 12px; border-radius: 20px; background: #fff5ee; border: none; margin: 15px 0;" placeholder="برای ۲۰ سالگیت یه آرزو بنویس..."></textarea>
-    <button class="cherry-btn" onclick="saveTimeCapsule()">📦 ذخیره</button>
-    <button class="cherry-btn" onclick="nextSlide()">⏰ بعدی ➡️</button>
-  </div>
-
-  <!-- اسلاید 5 -->
-  <div class="slide" id="slide5" style="display: none;">
-    <h2>🎮 بازی حافظه</h2>
-    <div class="memory-grid" id="memoryGrid"></div>
-    <p id="memoryStatus">❤️ پیدا کن و برنده شو!</p>
-    <button class="cherry-btn" onclick="nextSlide()">🎮 بعدی ➡️</button>
-  </div>
-
-  <!-- اسلاید 6 -->
-  <div class="slide" id="slide6" style="display: none;">
-    <h2>😂 چالش خنده</h2>
-    <div id="jokeBox" style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 30px; margin: 20px 0;">🤣 برای خندیدن کلیک کن!</div>
-    <button class="cherry-btn" onclick="tellJoke()">😂 یه لطیفه بگو</button>
-    <button class="cherry-btn" onclick="nextSlide()">😂 بعدی ➡️</button>
-  </div>
-
-  <!-- اسلاید 7 -->
-  <div class="slide" id="slide7" style="display: none;">
-    <h2>🔮 پیشگویی عاشقانه</h2>
-    <div class="fortune-ball" onclick="showFortune()">🔮</div>
-    <div id="fortuneText" class="fortune-text">✨ برای دیدن طالع‌ات کلیک کن ✨</div>
-    <button class="cherry-btn" onclick="nextSlide()">🔮 بعدی ➡️</button>
-  </div>
-
-  <!-- اسلاید 8 -->
-  <div class="slide" id="slide8" style="display: none;">
-    <h2>🌸 گلبرگ آرزو</h2>
-    <div class="wish-petal" onclick="makeWish()">🌸</div>
-    <div id="wishResult" style="margin-top: 15px;"></div>
-    <button class="cherry-btn" onclick="nextSlide()">🌸 بعدی ➡️</button>
-  </div>
-
-  <!-- اسلاید 9 -->
-  <div class="slide" id="slide9" style="display: none;">
-    <h2>🎫 کد تخفیف عاشقانه</h2>
-    <div style="background: #ffcc99; padding: 20px; border-radius: 20px; margin: 20px 0;">
-      <p style="font-size: 1.5rem; color: #8b1a2c; font-weight: bold;">🎁 YEGANE75 🎁</p>
-      <p style="color: #8b1a2c;">کد تخفیف ۷۵٪ برای بغل کردن من!</p>
+    <h2>پیام قفل شده</h2>
+    <div class="locked-message locked" id="lockedMsg" onclick="unlockMessage()">برای خوندن پیام کلیک کن</div>
+    <div id="secretMsg" style="display: none; background: linear-gradient(135deg, rgba(79, 172, 254, 0.3), rgba(0, 242, 254, 0.2)); padding: 18px; border-radius: 20px; margin-top: 12px; color: var(--text-light); border: 1px solid rgba(79, 172, 254, 0.5); font-size: 0.95rem; line-height: 1.8;">
+      یگانه جان... تو بهترین اتفاق زندگی منی!<br>
+      دوستت دارم بی‌نهایت
     </div>
-    <button class="cherry-btn" onclick="copyCode()">📋 کپی کن</button>
-    <button class="cherry-btn" onclick="nextSlide()">🎫 بعدی ➡️</button>
+    <button class="cherry-btn" onclick="nextSlide()">بعدی</button>
   </div>
 
-  <!-- اسلاید 10 -->
-  <div class="slide" id="slide10" style="display: none;">
-    <h2>🤳 سلفی نهایی</h2>
-    <div style="width: 200px; height: 200px; background: #ffcc99; border-radius: 30px; margin: 20px auto; display: flex; align-items: center; justify-content: center; font-size: 3rem; border: 3px solid #ff2a4a;">📸</div>
-    <p>سلفی بگیر و بهم بفرست! منتظرم 😊</p>
-    <button class="cherry-btn" onclick="nextSlide()">🤳 بعدی ➡️</button>
+  <!-- اسلاید 2: کپسول زمان -->
+  <div class="slide" id="slide2" style="display: none;">
+    <h2>کپسول زمان</h2>
+    <textarea id="timeCapsule" rows="3" class="time-textarea" placeholder="برای ۲۰ سالگیت یه آرزو بنویس..."></textarea>
+    <button class="cherry-btn" onclick="saveTimeCapsule()">ذخیره</button>
+    <button class="cherry-btn" onclick="nextSlide()">بعدی</button>
   </div>
 
-  <!-- اسلاید 11 -->
-  <div class="slide" id="slide11" style="display: none;">
-    <h2>😘 چالش بوسه</h2>
-    <div class="kiss-area" onclick="kissChallenge()">💋</div>
-    <div id="kissResult" style="margin-top: 15px;"></div>
-    <button class="cherry-btn" onclick="nextSlide()">😘 بعدی ➡️</button>
+  <!-- اسلاید 3: کد تخفیف شیک -->
+  <div class="slide" id="slide3" style="display: none;">
+    <h2>کد تخفیف</h2>
+    <div class="code-box">
+      <div class="code-inner">
+        <div class="code-label">PROMO CODE</div>
+        <div class="code">YEGANE75</div>
+        <div class="code-desc">۷۵٪ تخفیف برای بغل کردن من</div>
+      </div>
+    </div>
+    <button class="cherry-btn" onclick="copyCode()">کپی کن</button>
+    <button class="cherry-btn" onclick="nextSlide()">بعدی</button>
   </div>
 
-  <!-- اسلاید 12 -->
-  <div class="slide" id="slide12" style="display: none;">
-    <h2>🎉 تبریک! 🎉</h2>
-    <p style="font-size: 1.3rem; margin: 20px 0;">✨ تو همه چالش‌ها رو پشت سر گذاشتی! ✨</p>
-    <p>🌹 تو بهترین پرنسس دنیایی 🌹</p>
-    <div style="font-size: 3rem;">❤️🍒🌸</div>
-    <button class="cherry-btn restart-btn" onclick="goToStart()">🏠 برگشت به صفحه اول</button>
+  <!-- اسلاید 4: تبریک پایانی -->
+  <div class="slide" id="slide4" style="display: none;">
+    <h2>تبریک</h2>
+    <p class="congrats-text">تو همه چالش‌ها رو پشت سر گذاشتی!</p>
+    <p class="princess-line">تو بهترین پرنسس دنیایی</p>
+    <div class="hearts-row">❤️ 💙 🤍</div>
+    <button class="cherry-btn" onclick="sendToTelegram()">ارسال جواب‌ها برای سام</button>
+    <button class="cherry-btn restart-btn" onclick="goToStart()">برگشت به صفحه اول</button>
   </div>
+
 </div>
 
 <script>
+  // ========== ذرات آبی ==========
+  function createParticle() {
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    const size = Math.random() * 7 + 3;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDuration = (Math.random() * 10 + 6) + 's';
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 16000);
+  }
+  setInterval(createParticle, 200);
+  for (let i = 0; i < 40; i++) setTimeout(createParticle, i * 80);
+
+  // ========== اسلایدر ==========
   let currentSlide = 1;
-  const totalSlides = 12;
+  const totalSlides = 4;
 
   function showSlide(n) {
     for (let i = 1; i <= totalSlides; i++) {
@@ -328,128 +433,56 @@
     }
   }
 
+  // ========== پیام قفل شده ==========
   function unlockMessage() {
     const locked = document.getElementById('lockedMsg');
     const secret = document.getElementById('secretMsg');
     locked.classList.remove('locked');
     locked.classList.add('unlocked');
-    locked.innerHTML = '🔓 پیام باز شد! 🔓';
+    locked.innerHTML = 'پیام باز شد';
     secret.style.display = 'block';
   }
 
-  // امضا
-  let canvas = document.getElementById('signCanvas');
-  let ctx = canvas.getContext('2d');
-  let drawing = false;
-  function resizeCanvas() {
-    const container = canvas.parentElement;
-    const width = Math.min(280, container.clientWidth - 40);
-    canvas.width = width;
-    canvas.height = width * 0.5;
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = '#8b1a2c';
-    ctx.lineWidth = 2;
-  }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
-
-  function getCoords(e) {
-    const rect = canvas.getBoundingClientRect();
-    const scaleX = canvas.width / rect.width;
-    const scaleY = canvas.height / rect.height;
-    let x = (e.clientX - rect.left) * scaleX;
-    let y = (e.clientY - rect.top) * scaleY;
-    return { x: Math.min(Math.max(0, x), canvas.width), y: Math.min(Math.max(0, y), canvas.height) };
+  // ========== کپسول زمان ==========
+  function saveTimeCapsule() {
+    const msg = document.getElementById('timeCapsule').value;
+    if (msg) alert('آرزویت در کپسول زمان ذخیره شد');
+    else alert('یه آرزوی قشنگ بنویس');
   }
 
-  function startDraw(e) { drawing = true; const pos = getCoords(e); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); e.preventDefault(); }
-  function draw(e) { if (!drawing) return; const pos = getCoords(e); ctx.lineTo(pos.x, pos.y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(pos.x, pos.y); e.preventDefault(); }
-  function stopDraw() { drawing = false; }
-  canvas.addEventListener('mousedown', startDraw);
-  canvas.addEventListener('mousemove', draw);
-  canvas.addEventListener('mouseup', stopDraw);
-  canvas.addEventListener('touchstart', startDraw);
-  canvas.addEventListener('touchmove', draw);
-  canvas.addEventListener('touchend', stopDraw);
-
-  function clearSignature() { ctx.fillStyle = 'white'; ctx.fillRect(0, 0, canvas.width, canvas.height); }
-  function saveSignature() { alert('✅ امضایت ذخیره شد!'); }
-
-  function saveTimeCapsule() { const msg = document.getElementById('timeCapsule').value; if(msg) alert('✅ آرزویت در کپسول زمان ذخیره شد!'); else alert('⚠️ یه آرزوی قشنگ بنویس!'); }
-
-  // بازی حافظه
-  const emojis = ['❤️', '🍒', '🌸', '💖', '❤️', '🍒', '🌸', '💖'];
-  let shuffled = [], flipped = [], matched = [], lockBoard = false;
-  function shuffleArray(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
-  function initMemoryGame() {
-    shuffled = shuffleArray([...emojis]);
-    flipped = []; matched = []; lockBoard = false;
-    renderMemoryGrid();
-    document.getElementById('memoryStatus').innerHTML = '❤️ پیدا کن و برنده شو!';
-  }
-  function renderMemoryGrid() {
-    const grid = document.getElementById('memoryGrid');
-    grid.innerHTML = '';
-    shuffled.forEach((emoji, idx) => {
-      const card = document.createElement('div');
-      card.className = 'memory-card';
-      if (flipped.includes(idx) || matched.includes(idx)) {
-        card.innerHTML = emoji;
-        if (matched.includes(idx)) card.classList.add('matched');
-      } else card.innerHTML = '?';
-      card.onclick = () => flipCard(idx);
-      grid.appendChild(card);
-    });
-  }
-  function flipCard(idx) {
-    if (lockBoard) return;
-    if (flipped.includes(idx) || matched.includes(idx)) return;
-    flipped.push(idx);
-    renderMemoryGrid();
-    if (flipped.length === 2) { lockBoard = true; setTimeout(checkMatch, 500); }
-  }
-  function checkMatch() {
-    const [a, b] = flipped;
-    if (shuffled[a] === shuffled[b]) matched.push(a, b);
-    flipped = [];
-    renderMemoryGrid();
-    lockBoard = false;
-    if (matched.length === emojis.length) document.getElementById('memoryStatus').innerHTML = '🎊 تبریک! برنده شدی! 🎊';
+  // ========== کپی کد ==========
+  function copyCode() {
+    navigator.clipboard.writeText('YEGANE75');
+    alert('کد تخفیف کپی شد');
   }
 
-  const jokes = ["🗣️: چرا گوجه فرنگی از خیار میترسید؟ 🍅<br>😂: چون خیار خیاره!", "🗣️: به تخم مرغ چی میگن که میخنده؟ 🥚<br>😂: تخم مرغ خنده!", "🗣️: چرا موز نمی تونه بره سربازی؟ 🍌<br>😂: چون پوستش کنده!"];
-  function tellJoke() { document.getElementById('jokeBox').innerHTML = jokes[Math.floor(Math.random() * jokes.length)]; }
+  // ========== ارسال به تلگرام ==========
+  function sendToTelegram() {
+    const msg = `جواب‌های تولد یگانه\nکپسول زمان: ${document.getElementById('timeCapsule')?.value || 'ندارد'}\nمخصوص سام`;
+    window.open(`https://t.me/share/url?url=${encodeURIComponent(msg)}&text=${encodeURIComponent(msg)}`, '_blank');
+  }
 
-  const fortunes = ["🔮 سال آینده یه سفر قشنگ در انتظارته!", "🔮 یه خبر خوب به زودی بهت میرسه!", "🔮 کسی که دوستش داری همیشه بهت فکر میکنه!"];
-  function showFortune() { document.getElementById('fortuneText').innerHTML = fortunes[Math.floor(Math.random() * fortunes.length)]; }
+  // ========== برگشت ==========
+  function goToStart() {
+    window.location.href = 'index.html';
+  }
 
-  function makeWish() { document.getElementById('wishResult').innerHTML = '🌸 آرزوت به گلبرگا سپرده شد! انشالله برآورده میشه 🌸'; }
-  function copyCode() { navigator.clipboard.writeText('YEGANE75'); alert('🎫 کد تخفیف کپی شد!'); }
-  function kissChallenge() { document.getElementById('kissResult').innerHTML = '😘 آفرین! یه بوسه قشنگ فرستادی برام ❤️'; }
-  function goToStart() { window.location.href = 'index.html'; }
-
-  // قلب شناور
-  setInterval(() => {
-    const heart = document.createElement('div');
-    heart.innerHTML = ['❤️', '💖', '🌸'][Math.floor(Math.random() * 3)];
-    heart.style.position = 'fixed';
-    heart.style.left = Math.random() * 100 + '%';
-    heart.style.bottom = '-50px';
-    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
-    heart.style.pointerEvents = 'none';
-    heart.style.zIndex = '999';
-    heart.style.animation = 'floatHeart 2s ease-out forwards';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 2000);
-  }, 1000);
-
-  const style = document.createElement('style');
-  style.textContent = `@keyframes floatHeart { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(-100vh); opacity: 0; } }`;
-  document.head.appendChild(style);
+  // ========== دکمه تغییر تم ==========
+  const themeToggle = document.getElementById('themeToggleBtn');
+  let isDark = true;
+  themeToggle.addEventListener('click', () => {
+    if (isDark) {
+      document.body.classList.add('light-theme');
+      themeToggle.innerHTML = '☀️';
+      isDark = false;
+    } else {
+      document.body.classList.remove('light-theme');
+      themeToggle.innerHTML = '🌙';
+      isDark = true;
+    }
+  });
 
   showSlide(1);
-  initMemoryGame();
 </script>
 </body>
 </html>
