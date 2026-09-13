@@ -1,17 +1,12 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>نامه برای پرنسس یگانه 🌹</title>
+  <title> نامه برای دخترم</title>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     :root {
       --cherry-soft: #5a1525;
@@ -35,18 +30,17 @@
       font-family: 'Vazirmatn', 'Segoe UI', 'Tahoma', sans-serif;
       position: relative;
       padding: 20px;
+      transition: background 0.4s;
     }
 
-    /* بافت نویز */
+    /* بافت نویز ملایم */
     .noise {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       pointer-events: none;
       background: repeating-radial-gradient(circle at 20% 30%, rgba(255, 120, 140, 0.03) 0px, rgba(255, 120, 140, 0.03) 2px, transparent 2px, transparent 6px);
-      opacity: 0.5;
+      opacity: 0.4;
       mix-blend-mode: overlay;
       z-index: 1;
     }
@@ -57,64 +51,33 @@
       bottom: -60px;
       pointer-events: none;
       z-index: 1;
-      font-size: 16px;
-      animation: floatUp 10s linear forwards;
+      font-size: 14px;
+      animation: floatUp 12s linear forwards;
       filter: drop-shadow(0 0 3px #ff88a2);
-      opacity: 0.4;
+      opacity: 0.35;
     }
-
     @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.35; }
       100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
     }
 
-    /* لاین نوری (خط نورانی متحرک) */
-    .light-line {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    .light-line::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 30%,
-        rgba(255, 107, 138, 0.08) 40%,
-        rgba(255, 107, 138, 0.15) 50%,
-        rgba(255, 107, 138, 0.08) 60%,
-        transparent 70%
-      );
-      animation: lightMove 8s linear infinite;
-    }
-    @keyframes lightMove {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* کارت نامه کوچیک‌تر */
+    /* کارت نامه شیک */
     .letter-paper {
       position: relative;
       z-index: 20;
-      background: rgba(255, 250, 245, 0.92);
+      background: linear-gradient(145deg, #fffaf5, #fff5ee);
       width: 90%;
-      max-width: 500px;
-      padding: 1.8rem 1.5rem;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 200, 180, 0.3);
+      max-width: 480px;
+      padding: 2.5rem 2rem;
+      border-radius: 30px;
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        0 0 0 1px rgba(255, 200, 180, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
       transition: all 0.3s;
-      animation: letterFloatIn 0.6s ease-out forwards;
+      animation: letterFloatIn 0.8s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
     }
 
     @keyframes letterFloatIn {
@@ -122,116 +85,165 @@
     }
 
     .letter-paper:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 180, 160, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 180, 160, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
-    /* تزئینات گوشه */
+    /* خط تزئینی بالا */
     .letter-paper::before {
-      content: "🌸";
+      content: '';
       position: absolute;
-      top: 12px;
-      right: 15px;
-      font-size: 20px;
-      opacity: 0.35;
-    }
-    .letter-paper::after {
-      content: "🌹";
-      position: absolute;
-      bottom: 12px;
-      left: 15px;
-      font-size: 20px;
-      opacity: 0.35;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ff88a2, #9e2a3e, #ff88a2, transparent);
+      border-radius: 0 0 10px 10px;
     }
 
-    /* تیتر */
+    /* تیتر نامه */
     .title-wrapper {
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 25px;
+      position: relative;
     }
+
     h1 {
-      text-align: center;
-      margin-bottom: 0;
       color: #9e2a3e;
-      font-size: 1.5rem;
-      font-family: 'Dancing Script', cursive;
-      border-bottom: 2px solid #ffc0cb;
+      font-size: 1.4rem;
+      font-family: 'Vazirmatn', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
       display: inline-block;
-      padding-bottom: 6px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(255, 140, 160, 0.4);
+      position: relative;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 20%;
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #9e2a3e, transparent);
     }
 
     /* متن نامه */
     .letter-content {
-      font-size: 0.85rem;
-      line-height: 1.9;
-      color: #2c1810;
-      font-family: 'Georgia', 'Times New Roman', serif;
-      text-align: justify;
+      font-size: 0.95rem;
+      line-height: 2.1;
+      color: #3a1f1a;
+      font-family: 'Vazirmatn', 'Georgia', serif;
+      text-align: right;
     }
 
     .greeting {
-      font-size: 1rem;
-      font-weight: bold;
-      color: #b33b4d;
-      margin-bottom: 10px;
-      display: inline-block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #9e2a3e;
+      margin-bottom: 18px;
+      display: block;
+      text-align: right;
     }
 
     .princess-text {
-      font-size: 1.1rem;
-      font-weight: bold;
-      background: linear-gradient(120deg, #c94f6b, #e87a5e);
+      font-size: 1.15rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, #9e2a3e, #d14a6a, #ff88a2, #9e2a3e);
+      background-size: 300% auto;
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
       display: inline-block;
+      animation: princessShine 4s linear infinite;
     }
 
+    @keyframes princessShine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    /* پاراگراف‌های نامه */
+    .letter-content p {
+      margin-bottom: 16px;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    /* امضا */
     .signature {
-      margin-top: 20px;
+      margin-top: 30px;
       text-align: left;
       font-style: italic;
-      font-size: 0.85rem;
-      border-top: 1px dashed #e0b0a0;
-      padding-top: 12px;
+      font-size: 0.9rem;
+      padding-top: 18px;
       color: #7a3e4a;
+      position: relative;
+    }
+
+    .signature::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(158, 42, 62, 0.4));
     }
 
     /* دکمه */
     .btn-gift {
       display: block;
-      width: 200px;
-      margin: 25px auto 5px;
-      padding: 10px 20px;
+      width: 230px;
+      margin: 30px auto 8px;
+      padding: 12px 24px;
       text-align: center;
       text-decoration: none;
       background: linear-gradient(135deg, #9e2a3e, #ff6b8a);
       background-size: 200% auto;
       color: white;
       border-radius: 50px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      transition: all 0.2s;
-      box-shadow: 0 4px 12px rgba(255, 107, 138, 0.3);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      box-shadow: 0 6px 18px rgba(255, 107, 138, 0.35);
+      position: relative;
+      overflow: hidden;
     }
 
-    .btn-gift:active {
-      transform: scale(0.96);
+    .btn-gift::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transition: left 0.6s;
     }
+
+    .btn-gift:hover::before { left: 100%; }
+    .btn-gift:active { transform: scale(0.96); }
 
     /* دکمه تغییر تم */
     .theme-toggle {
       position: fixed;
       top: 15px;
       left: 15px;
-      width: 42px;
-      height: 42px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       background: linear-gradient(135deg, #9e2a3e, #ff6b8a);
       border: none;
       cursor: pointer;
-      font-size: 1.3rem;
-      box-shadow: 0 3px 12px rgba(255, 107, 138, 0.3);
+      font-size: 1.4rem;
+      box-shadow: 0 3px 12px rgba(255, 107, 138, 0.4);
       z-index: 1000;
       transition: all 0.2s;
       display: flex;
@@ -240,9 +252,7 @@
       color: white;
     }
 
-    .theme-toggle:active {
-      transform: scale(0.92);
-    }
+    .theme-toggle:active { transform: scale(0.9); }
 
     /* افکت قلب با کلیک */
     .heart-glow {
@@ -274,71 +284,81 @@
 
     .footer-note {
       text-align: center;
-      font-size: 0.65rem;
+      font-size: 0.7rem;
       color: #b56a6a;
-      margin-top: 12px;
+      margin-top: 18px;
+      animation: footerPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes footerPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* تم روشن */
+    body.light-theme {
+      background: linear-gradient(145deg, #fff5ee, #ffe8dc, #ffddd0);
+    }
+
+    body.light-theme .letter-paper {
+      background: linear-gradient(145deg, #ffffff, #fff8f2);
+      box-shadow: 
+        0 20px 50px rgba(158, 42, 62, 0.15),
+        0 0 0 1px rgba(255, 180, 160, 0.4);
     }
 
     @media (max-width: 550px) {
-      .letter-paper { padding: 1.2rem; max-width: 380px; }
+      .letter-paper { padding: 1.8rem 1.4rem; max-width: 92%; border-radius: 25px; }
       h1 { font-size: 1.2rem; }
-      .letter-content { font-size: 0.75rem; line-height: 1.8; }
-      .greeting { font-size: 0.9rem; }
-      .btn-gift { width: 170px; padding: 8px 16px; font-size: 0.8rem; }
+      .letter-content { font-size: 0.88rem; line-height: 2; }
+      .greeting { font-size: 1rem; }
+      .princess-text { font-size: 1.05rem; }
+      .btn-gift { width: 200px; padding: 10px 20px; font-size: 0.85rem; }
     }
   </style>
 </head>
 <body>
 
 <div class="noise"></div>
-<div class="light-line"></div>
 <button class="theme-toggle" id="themeToggleBtn">🌙</button>
 
 <div class="letter-paper">
   <div class="title-wrapper">
-    <h1>💌 نامه‌ای برای پرنسس من 💌</h1>
+    <h1>نامه‌ای برای دختر من</h1>
   </div>
 
   <div class="letter-content">
     <div class="greeting">
-      🌸 <span class="princess-text">پرنسس یگانه</span> عزیزم، 🌸
+      <span class="princess-text">پرنسس یگانه</span> عزیزم،
     </div>
 
-    <br>
+    <p>
+      امروز روز خاصیه... روزی که باید به خاطر به دنیا اومدنت، از زمین و آسمون تشکر کرد.
+    </p>
 
-    امروز روز خاصیه... روزی که باید به خاطر به دنیا اومدن تو، از زمین و آسمون تشکر کرد. ✨
+    <p>
+      هر لحظه‌ای که کنار تو بودم، مثل یه رویای شیرین توی قلبم موند. از خنده‌هات، از مهربونیت، از حضورت... از اینکه تو وارد زندگی من شدی، بی‌نهایت ممنونم.
+    </p>
 
-    <br><br>
+    <p>
+      برای ۱۹ سالگیت آرزومنده که هر چی دلت میخواد بهش برسی، همیشه سالم و شاد باشی، لبخند قشنگت هیچوقت از لبت پاک نشه و دنیا همیشه بهت لبخند بزنه.
+    </p>
 
-    هر لحظه‌ای که کنار تو بودم، مثل یه رویای شیرین موند توی قلبم.  
-    از خنده‌هات، از مهربونیت، از حضورت... از اینکه تو وارد زندگی من شدی، بینهایت ممنونم.
-
-    <br><br>
-
-    برای ۱۹ سالگیت آرزومنده که:
-    <br>
-    🌹 هر چی دلت میخواد بهش برسی  
-    🌹 همیشه سالم و شاد باشی  
-    🌹 لبخند قشنگت هیچوقت از لبات پاک نشه  
-    🌹 دنیا همیشه بهت لبخند بزنه  
-
-    <br>
-
-    تو لایق بهترین‌های دنیایی، چون تو خودت بهترینی.  
-    <span class="princess-text">پرنسس کوچولوی من</span>، بدان که همیشه کسی هست که بهت افتخار میکنه و دوست داره. 💕
+    <p>
+      تو لایق بهترین‌های دنیایی، چون خودت بهترینی. <span class="princess-text">پرنسس کوچولوی من</span>، همیشه کسی هست که بهت افتخار میکنه و دوستت داره.
+    </p>
 
     <div class="signature">
-      همیشه دوستدار تو،  
-      <br>
-      با تمام قلبم 🌹
+      همیشه دوستدار تو،<br>
+      با تمام قلبم
     </div>
   </div>
 
   <a href="gift.html" class="btn-gift">
-    🎁 بریم برای دیدن هدیه‌ات 🎁
+    بریم برای دیدن هدیه‌ات
   </a>
   <div class="footer-note">
-    🌸 مخصوص ۱۹ سالگی پرنسس یگانه 🌸
+    مخصوص ۱۹ سالگی پرنسس یگانه
   </div>
 </div>
 
@@ -347,23 +367,23 @@
   function createHeart() {
     const heart = document.createElement('div');
     heart.classList.add('floating-heart');
-    const icons = ['❤️', '💖', '🌸', '🌹', '✨', '💗'];
+    const icons = ['❤️', '💖', '🌸', '✨', '💗', '💝'];
     heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
     heart.style.left = Math.random() * 100 + '%';
-    heart.style.fontSize = (Math.random() * 20 + 14) + 'px';
-    heart.style.animationDuration = (Math.random() * 8 + 6) + 's';
+    heart.style.fontSize = (Math.random() * 16 + 12) + 'px';
+    heart.style.animationDuration = (Math.random() * 10 + 8) + 's';
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 14000);
+    setTimeout(() => heart.remove(), 16000);
   }
 
-  for (let i = 0; i < 15; i++) setTimeout(createHeart, i * 120);
-  setInterval(createHeart, 400);
+  for (let i = 0; i < 12; i++) setTimeout(createHeart, i * 150);
+  setInterval(createHeart, 500);
 
   // ========== قلب با کلیک ==========
   function createHeartGlow(x, y) {
     const heart = document.createElement('div');
     heart.classList.add('heart-glow');
-    const icons = ['❤️', '💖', '🌸', '✨', '🌹', '💗'];
+    const icons = ['❤️', '💖', '🌸', '✨', '💗'];
     heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
     heart.style.left = (x - 12) + 'px';
     heart.style.top = (y - 12) + 'px';
@@ -406,15 +426,11 @@
   let isDark = true;
   themeToggle.addEventListener('click', () => {
     if (isDark) {
-      document.body.style.background = 'linear-gradient(145deg, #fff0e8, #ffe0d4, #ffd5c8)';
-      document.documentElement.style.setProperty('--text-light', '#4a1525');
-      document.documentElement.style.setProperty('--text-soft', '#b85c3a');
+      document.body.classList.add('light-theme');
       themeToggle.innerHTML = '☀️';
       isDark = false;
     } else {
-      document.body.style.background = 'linear-gradient(145deg, #2a0a12, #3d101f, #2a0a12)';
-      document.documentElement.style.setProperty('--text-light', '#fff5f0');
-      document.documentElement.style.setProperty('--text-soft', '#ffddcc');
+      document.body.classList.remove('light-theme');
       themeToggle.innerHTML = '🌙';
       isDark = true;
     }

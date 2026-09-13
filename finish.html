@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -362,11 +362,9 @@
       to { opacity: 1; transform: translateY(0) rotateX(0deg); }
     }
     .slide-1 { background: linear-gradient(135deg, rgba(255, 153, 51, 0.3), rgba(255, 187, 102, 0.2)); border-color: #ff9933; }
-    .slide-2 { background: linear-gradient(135deg, rgba(51, 204, 102, 0.3), rgba(102, 255, 153, 0.2)); border-color: #33cc66; }
-    .slide-3 { background: linear-gradient(135deg, rgba(51, 153, 255, 0.3), rgba(102, 187, 255, 0.2)); border-color: #3399ff; }
-    .slide-4 { background: linear-gradient(135deg, rgba(255, 204, 51, 0.3), rgba(255, 221, 102, 0.2)); border-color: #ffcc33; }
-    .slide-5 { background: linear-gradient(135deg, rgba(51, 204, 204, 0.3), rgba(102, 255, 255, 0.2)); border-color: #33cccc; }
-    .slide-6 { background: linear-gradient(135deg, rgba(255, 204, 153, 0.3), rgba(255, 221, 187, 0.2)); border-color: #ffcc99; }
+    .slide-2 { background: linear-gradient(135deg, rgba(51, 153, 255, 0.3), rgba(102, 187, 255, 0.2)); border-color: #3399ff; }
+    .slide-3 { background: linear-gradient(135deg, rgba(255, 204, 51, 0.3), rgba(255, 221, 102, 0.2)); border-color: #ffcc33; }
+    .slide-4 { background: linear-gradient(135deg, rgba(255, 204, 153, 0.3), rgba(255, 221, 187, 0.2)); border-color: #ffcc99; }
 
     h2 { font-size: 2rem; font-family: 'Dancing Script', cursive; margin-bottom: 20px; }
     .cherry-btn {
@@ -393,27 +391,6 @@
     }
     .locked-message.locked { filter: blur(8px); }
     .locked-message.unlocked { filter: blur(0); background: rgba(255, 42, 74, 0.3); }
-    .signature-canvas {
-      border: 2px solid #33cc66;
-      border-radius: 20px;
-      background: white;
-      margin: 15px 0;
-      touch-action: none;
-    }
-    .fortune-ball {
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, #ff2a4a, #8b1a2c);
-      border-radius: 50%;
-      margin: 20px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 3rem;
-      transition: all 0.2s;
-    }
-    .fortune-ball:active { transform: scale(0.95); }
 
     @media (max-width: 550px) {
       .finish-card { padding: 1.2rem; }
@@ -422,7 +399,6 @@
       .slide { padding: 1.2rem; }
       h2 { font-size: 1.5rem; }
       .cherry-btn { padding: 8px 20px; font-size: 0.85rem; }
-      .fortune-ball { width: 120px; height: 120px; font-size: 2.5rem; }
     }
   </style>
 </head>
@@ -475,7 +451,7 @@
   </div>
 </div>
 
-<!-- صفحه اسلایدر بانمک (6 اسلاید) -->
+<!-- صفحه اسلایدر بانمک (4 اسلاید) -->
 <div class="slider-page" id="sliderPage">
   <div class="slides-container" id="slidesContainer">
     <!-- اسلاید 1: پیام قفل شده -->
@@ -486,33 +462,16 @@
       <button class="cherry-btn" onclick="nextSlide()">🔓 بعدی ➡️</button>
     </div>
 
-    <!-- اسلاید 2: امضای دیجیتال -->
+    <!-- اسلاید 2: کپسول زمان -->
     <div class="slide slide-2" id="slide2" style="display: none;">
-      <h2 style="color: #44cc66;">✍️ امضای دیجیتال</h2>
-      <canvas id="signCanvas" width="280" height="150" class="signature-canvas" style="width:100%; height:auto; max-width:280px;"></canvas>
-      <button class="cherry-btn" onclick="clearSignature()">🗑️ پاک کردن</button>
-      <button class="cherry-btn" onclick="saveSignature()">💾 ذخیره امضا</button>
-      <button class="cherry-btn" onclick="nextSlide()">✍️ بعدی ➡️</button>
-    </div>
-
-    <!-- اسلاید 3: کپسول زمان -->
-    <div class="slide slide-3" id="slide3" style="display: none;">
       <h2 style="color: #44aaff;">⏰ کپسول زمان</h2>
       <textarea id="timeCapsule" rows="3" style="width: 90%; padding: 12px; border-radius: 20px; background: #fff5ee; border: 2px solid #3399ff; margin: 15px 0; font-family: inherit;" placeholder="برای ۲۰ سالگیت یه آرزو بنویس..."></textarea>
       <button class="cherry-btn" onclick="saveTimeCapsule()">📦 ذخیره</button>
       <button class="cherry-btn" onclick="nextSlide()">⏰ بعدی ➡️</button>
     </div>
 
-    <!-- اسلاید 4: پیشگویی عاشقانه -->
-    <div class="slide slide-4" id="slide4" style="display: none;">
-      <h2 style="color: #33cccc;">🔮 پیشگویی عاشقانه</h2>
-      <div class="fortune-ball" onclick="showFortune()" style="box-shadow: 0 0 20px #33cccc;">🔮</div>
-      <div id="fortuneText" style="color: #33cccc; margin-top: 10px;">✨ برای دیدن طالع‌ات کلیک کن ✨</div>
-      <button class="cherry-btn" onclick="nextSlide()">🔮 بعدی ➡️</button>
-    </div>
-
-    <!-- اسلاید 5: کد تخفیف عاشقانه -->
-    <div class="slide slide-5" id="slide5" style="display: none;">
+    <!-- اسلاید 3: کد تخفیف عاشقانه -->
+    <div class="slide slide-3" id="slide3" style="display: none;">
       <h2 style="color: #ffcc33;">🎫 کد تخفیف عاشقانه</h2>
       <div style="background: linear-gradient(135deg, #ffcc99, #ff66cc); padding: 20px; border-radius: 20px; margin: 20px 0;">
         <p style="font-size: 1.8rem; color: #fff; font-weight: bold;">🎁 YEGANE75 🎁</p>
@@ -522,8 +481,8 @@
       <button class="cherry-btn" onclick="nextSlide()">🎫 بعدی ➡️</button>
     </div>
 
-    <!-- اسلاید 6: پایان تبریک -->
-    <div class="slide slide-6" id="slide6" style="display: none;">
+    <!-- اسلاید 4: پایان تبریک -->
+    <div class="slide slide-4" id="slide4" style="display: none;">
       <h2 style="color: #ffcc99;">🎉 تبریک! 🎉</h2>
       <p style="font-size: 1.4rem; margin: 20px 0; font-family: 'Dancing Script', cursive;">✨ تو همه چالش‌ها رو پشت سر گذاشتی! ✨</p>
       <p style="font-size: 1.2rem;">🌹 تو بهترین پرنسس دنیایی 🌹</p>
@@ -646,7 +605,7 @@
 
   // ========== اسلایدر ==========
   let currentSlide = 1;
-  const totalSlides = 6;
+  const totalSlides = 4;
   function showSlide(n) {
     for (let i=1; i<=totalSlides; i++) {
       const slide = document.getElementById(`slide${i}`);
@@ -667,53 +626,10 @@
     document.getElementById('lockedMsg').innerHTML = '🔓 پیام باز شد! 🔓';
     document.getElementById('secretMsg').style.display = 'block';
   }
-  
-  // امضا
-  let canvasS = document.getElementById('signCanvas');
-  let ctx = canvasS.getContext('2d');
-  let drawing = false;
-  function resizeCanvas() {
-    const w = Math.min(280, canvasS.parentElement.clientWidth-40);
-    canvasS.width = w;
-    canvasS.height = w*0.5;
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0,0,canvasS.width,canvasS.height);
-    ctx.strokeStyle = '#33cc66';
-    ctx.lineWidth = 2;
-    ctx.lineCap = 'round';
-  }
-  resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
-  function getCoords(e) {
-    const rect = canvasS.getBoundingClientRect();
-    const scaleX = canvasS.width/rect.width;
-    const scaleY = canvasS.height/rect.height;
-    let cx, cy;
-    if (e.touches) { cx = e.touches[0].clientX; cy = e.touches[0].clientY; }
-    else { cx = e.clientX; cy = e.clientY; }
-    let x = (cx-rect.left)*scaleX;
-    let y = (cy-rect.top)*scaleY;
-    return {x: Math.min(Math.max(0,x),canvasS.width), y: Math.min(Math.max(0,y),canvasS.height)};
-  }
-  function startDraw(e) { drawing=true; const p=getCoords(e); ctx.beginPath(); ctx.moveTo(p.x,p.y); e.preventDefault(); }
-  function draw(e) { if(!drawing) return; const p=getCoords(e); ctx.lineTo(p.x,p.y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(p.x,p.y); e.preventDefault(); }
-  function stopDraw() { drawing=false; }
-  canvasS.addEventListener('mousedown', startDraw);
-  canvasS.addEventListener('mousemove', draw);
-  canvasS.addEventListener('mouseup', stopDraw);
-  canvasS.addEventListener('touchstart', startDraw);
-  canvasS.addEventListener('touchmove', draw);
-  canvasS.addEventListener('touchend', stopDraw);
-  function clearSignature() { ctx.fillStyle='white'; ctx.fillRect(0,0,canvasS.width,canvasS.height); }
-  function saveSignature() { alert('✅ امضایت ذخیره شد!'); }
   function saveTimeCapsule() { const m = document.getElementById('timeCapsule').value; alert(m ? '✅ آرزویت در کپسول زمان ذخیره شد!' : '⚠️ یه آرزوی قشنگ بنویس!'); }
-  
-  const fortunes = ["🔮 سال آینده یه سفر قشنگ در انتظارته!","🔮 یه خبر خوب به زودی بهت میرسه!","🔮 کسی که دوستش داری همیشه بهت فکر میکنه!","🔮 آرزوی قشنگت به زودی برآورده میشه!"];
-  function showFortune() { document.getElementById('fortuneText').innerHTML = fortunes[Math.floor(Math.random()*fortunes.length)]; }
-  
   function copyCode() { navigator.clipboard.writeText('YEGANE75'); alert('🎫 کد تخفیف کپی شد!'); }
 
-  // تغییر تم
+  // ========== تغییر تم ==========
   const themeToggle = document.getElementById('themeToggleBtn');
   let isDark = true;
   themeToggle.addEventListener('click', () => {

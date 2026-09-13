@@ -50,7 +50,6 @@
       z-index: 1;
     }
 
-    /* لاین نوری */
     .light-line {
       position: fixed;
       top: 0;
@@ -68,14 +67,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: linear-gradient(
-        45deg,
-        transparent 30%,
-        rgba(255, 107, 138, 0.08) 40%,
-        rgba(255, 107, 138, 0.12) 50%,
-        rgba(255, 107, 138, 0.08) 60%,
-        transparent 70%
-      );
+      background: linear-gradient(45deg, transparent 30%, rgba(255, 107, 138, 0.08) 40%, rgba(255, 107, 138, 0.12) 50%, rgba(255, 107, 138, 0.08) 60%, transparent 70%);
       animation: lightMove 10s linear infinite;
     }
     @keyframes lightMove {
@@ -99,7 +91,38 @@
       100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
     }
 
-    /* کارت اصلی کوچیک */
+    /* ========== تیتر بالا با فونت آبی ========== */
+    .top-title {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .top-title h2 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(125deg, #4facfe, #00f2fe, #4facfe);
+      background-size: 300% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: topTitleShine 3s linear infinite;
+      text-shadow: 0 0 20px rgba(79, 172, 254, 0.4);
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+
+    @keyframes topTitleShine {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    /* کارت اصلی */
     .gift-card {
       background: var(--glass-bg);
       backdrop-filter: blur(20px);
@@ -205,11 +228,14 @@
       color: #ffaa88;
     }
 
-    /* ========== خرس خفن تر ========== */
+    /* ========== خرس ========== */
     .bear-container {
       margin: 15px 0;
       cursor: pointer;
       animation: bearFloat 3s ease-in-out infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     @keyframes bearFloat {
       0%, 100% { transform: translateY(0px); }
@@ -217,8 +243,8 @@
     }
     .bear {
       position: relative;
-      width: 160px;
-      height: 180px;
+      width: 180px;
+      height: 200px;
       margin: 0 auto;
     }
     /* بدن */
@@ -227,11 +253,11 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 110px;
-      height: 110px;
-      background: linear-gradient(135deg, #c98a6e, #b57052);
+      width: 130px;
+      height: 130px;
+      background: radial-gradient(circle at 40% 30%, #e8b088, #c98a6e 60%, #a86a52);
       border-radius: 50%;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.25), inset -5px -5px 15px rgba(0,0,0,0.15);
     }
     /* سر */
     .bear-head {
@@ -239,91 +265,98 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 90px;
-      height: 82px;
-      background: linear-gradient(135deg, #d49a7a, #b57052);
+      width: 110px;
+      height: 100px;
+      background: radial-gradient(circle at 40% 30%, #f0c0a0, #d49a7a 60%, #b57a5a);
       border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2), inset -4px -4px 12px rgba(0,0,0,0.1);
     }
     /* گوش‌ها */
     .bear-ear {
       position: absolute;
-      width: 28px;
-      height: 28px;
-      background: #d49a7a;
+      width: 34px;
+      height: 34px;
+      background: radial-gradient(circle at 40% 30%, #e8b088, #c98a6e);
       border-radius: 50%;
-      top: -6px;
+      top: -8px;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
     }
-    .bear-ear-left { left: 8px; }
-    .bear-ear-right { right: 8px; }
+    .bear-ear-left { left: 10px; }
+    .bear-ear-right { right: 10px; }
     .bear-ear-inner {
       position: absolute;
-      width: 18px;
-      height: 18px;
-      background: #ffb088;
+      width: 22px;
+      height: 22px;
+      background: radial-gradient(circle, #ffb088, #ff9999);
       border-radius: 50%;
-      top: 5px;
-      left: 5px;
+      top: 6px;
+      left: 6px;
     }
     /* چشم‌ها */
     .bear-eyes {
       position: absolute;
-      width: 12px;
-      height: 12px;
-      background: #2c1a10;
+      width: 16px;
+      height: 16px;
+      background: radial-gradient(circle at 30% 30%, #4a2c1a, #2c1a10);
       border-radius: 50%;
-      top: 28px;
-      box-shadow: 0 0 0 2px #fff0e0;
+      top: 35px;
+      box-shadow: 0 0 0 3px #fff5e8, 0 0 8px rgba(0,0,0,0.2);
       animation: eyeBlink 4s ease-in-out infinite;
+      z-index: 5;
     }
     @keyframes eyeBlink {
-      0%, 94%, 100% { transform: scaleY(1); }
-      97% { transform: scaleY(0.1); }
+      0%, 92%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0.1); }
     }
-    .bear-eye-left { left: 20px; }
-    .bear-eye-right { right: 20px; }
+    .bear-eye-left { left: 22px; }
+    .bear-eye-right { right: 22px; }
+    .bear-eyes::after {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      top: 3px;
+      left: 3px;
+      opacity: 0.9;
+    }
     /* بینی */
     .bear-nose {
       position: absolute;
-      width: 18px;
-      height: 14px;
-      background: #5a3020;
+      width: 22px;
+      height: 16px;
+      background: radial-gradient(circle at 30% 30%, #6a3a26, #4a2518);
       border-radius: 50%;
-      bottom: 22px;
+      bottom: 26px;
       left: 50%;
       transform: translateX(-50%);
-    }
-    /* دهان خندان */
-    .bear-mouth {
-      position: absolute;
-      width: 24px;
-      height: 14px;
-      border-bottom: 2px solid #5a3020;
-      border-radius: 0 0 50% 50%;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      z-index: 5;
     }
     /* گونه‌ها */
     .bear-cheek {
       position: absolute;
-      width: 14px;
-      height: 14px;
-      background: #ffaa88;
+      width: 18px;
+      height: 12px;
+      background: radial-gradient(circle, #ffaa99, #ff8899);
       border-radius: 50%;
-      bottom: 18px;
-      opacity: 0.6;
+      bottom: 22px;
+      opacity: 0.7;
+      filter: blur(0.5px);
+      z-index: 4;
     }
-    .bear-cheek-left { left: 12px; }
-    .bear-cheek-right { right: 12px; }
+    .bear-cheek-left { left: 10px; }
+    .bear-cheek-right { right: 10px; }
     /* قلب روی دست */
     .bear-heart {
       position: absolute;
-      bottom: 25px;
-      right: 8px;
-      font-size: 22px;
+      bottom: 30px;
+      right: 10px;
+      font-size: 26px;
       animation: heartBeat 0.8s ease-in-out infinite;
-      filter: drop-shadow(0 0 4px #ff3366);
+      filter: drop-shadow(0 0 6px #ff3366);
+      z-index: 6;
     }
     @keyframes heartBeat {
       0%, 100% { transform: scale(1); }
@@ -332,44 +365,51 @@
     /* ربان */
     .bear-ribbon {
       position: absolute;
-      bottom: 5px;
+      bottom: 8px;
       left: 50%;
       transform: translateX(-50%);
-      width: 40px;
-      height: 12px;
-      background: #ff2a4a;
+      width: 48px;
+      height: 14px;
+      background: linear-gradient(135deg, #ff4466, #ff2a4a);
       border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(255, 42, 74, 0.4);
+      z-index: 5;
     }
     .bear-ribbon::before,
     .bear-ribbon::after {
       content: '';
       position: absolute;
-      width: 12px;
-      height: 16px;
-      background: #ff2a4a;
-      border-radius: 0 0 6px 6px;
-      top: -10px;
+      width: 14px;
+      height: 20px;
+      background: linear-gradient(135deg, #ff4466, #ff2a4a);
+      border-radius: 0 0 8px 8px;
+      top: -12px;
     }
     .bear-ribbon::before {
-      left: 6px;
+      left: 7px;
       transform: rotate(-15deg);
     }
     .bear-ribbon::after {
-      right: 6px;
+      right: 7px;
       transform: rotate(15deg);
     }
-    /* هاله نور دور خرس */
+    /* هاله نور */
     .bear-glow {
       position: absolute;
-      top: -10px;
-      left: -10px;
-      width: calc(100% + 20px);
-      height: calc(100% + 20px);
+      top: -15px;
+      left: -15px;
+      width: calc(100% + 30px);
+      height: calc(100% + 30px);
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 107, 138, 0.2), transparent);
+      background: radial-gradient(circle, rgba(255, 107, 138, 0.25), transparent);
       opacity: 0;
       transition: opacity 0.3s;
       pointer-events: none;
+      animation: glowPulse 2s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
     }
     .bear-container:hover .bear-glow {
       opacity: 1;
@@ -394,7 +434,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 8px 25px;
+      padding: 10px 28px;
       background: linear-gradient(135deg, #9e2a3e, #ff6b8a);
       background-size: 200% auto;
       color: white;
@@ -425,6 +465,10 @@
       font-size: 1.3rem;
       z-index: 1000;
       box-shadow: 0 3px 12px rgba(255, 107, 138, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
     }
     .theme-toggle:active { transform: scale(0.92); }
 
@@ -436,12 +480,18 @@
     }
 
     @media (max-width: 550px) {
+      .top-title h2 { font-size: 1.6rem; }
+      .top-title { top: 15px; }
       .gift-card { padding: 1.2rem; max-width: 360px; }
       h1 { font-size: 1.3rem; }
-      .bear { width: 140px; height: 160px; }
-      .bear-body { width: 95px; height: 95px; }
-      .bear-head { width: 78px; height: 72px; }
-      .bear-heart { font-size: 18px; right: 3px; }
+      .bear { width: 160px; height: 180px; }
+      .bear-body { width: 115px; height: 115px; }
+      .bear-head { width: 98px; height: 90px; }
+      .bear-ear { width: 30px; height: 30px; }
+      .bear-eyes { width: 14px; height: 14px; top: 32px; }
+      .bear-eye-left { left: 20px; }
+      .bear-eye-right { right: 20px; }
+      .bear-heart { font-size: 22px; right: 5px; }
       .countdown-item { padding: 3px 8px; min-width: 48px; }
       .countdown-item span:first-child { font-size: 1.1rem; }
     }
@@ -452,6 +502,11 @@
 <div class="noise"></div>
 <div class="light-line"></div>
 <button class="theme-toggle" id="themeToggleBtn">🌙</button>
+
+<!-- تیتر بالا با فونت آبی -->
+<div class="top-title">
+  <h2>تولدت مبارک</h2>
+</div>
 
 <div class="gift-card">
   <h1>🎁 هدیه برای پرنسس یگانه 🎁</h1>
@@ -485,7 +540,7 @@
     <div class="countdown-footer">✨ ۱۷ سپتامبر ۲۰۲۷ ✨</div>
   </div>
 
-  <!-- عروس خرسی خفن -->
+  <!-- عروس خرسی -->
   <div class="bear-container" id="bearContainer">
     <div class="bear">
       <div class="bear-glow"></div>
@@ -499,10 +554,9 @@
         </div>
         <div class="bear-eyes bear-eye-left"></div>
         <div class="bear-eyes bear-eye-right"></div>
-        <div class="bear-nose"></div>
-        <div class="bear-mouth"></div>
         <div class="bear-cheek bear-cheek-left"></div>
         <div class="bear-cheek bear-cheek-right"></div>
+        <div class="bear-nose"></div>
         <div class="bear-heart">❤️</div>
         <div class="bear-ribbon"></div>
       </div>
